@@ -1,0 +1,21 @@
+# whitelist
+branches:  
+  only:
+    - master
+    - staging
+    - production
+services:  
+#Enable docker service inside travis
+  - docker
+before_install:  
+  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+script: 
+  #build the image
+  - docker build --no-cache -t 3blades/openresty .
+  #tag image
+  - docker tag 3blades/openresty 3blades/openresty:build-$TRAVIS_BUILD_NUMBER
+  #push image
+  - docker push 3blades/openresty:build-$TRAVIS_BUILD_NUMBER
+notifications:
+  slack: 3blades:0lcWo2AurVy41XkVdyFVejCG
+    
