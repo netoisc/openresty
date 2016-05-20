@@ -3,7 +3,7 @@
 # and add 'Full Access' to Docker Cloud API. Publish internal port to 
 # external dynamic port for service discovery.
 
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER 3Blades <contact@3blades.io>
 
 RUN apt-get update \
