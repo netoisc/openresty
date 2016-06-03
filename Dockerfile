@@ -32,10 +32,10 @@ RUN apt-get install -y \
     make \
     perl
 
-RUN wget -O /tmp/openresty.tar.gz http://openresty.org/download/ngx_openresty-1.4.2.8.tar.gz \
+RUN wget -O /tmp/openresty.tar.gz http://openresty.org/download/ngx_openresty-1.9.7.5.tar.gz \
  && cd /tmp \
  && tar xzvf openresty.tar.gz \
- && cd /tmp/ngx_openresty-1.4.2.8 \
+ && cd /tmp/openresty-1.9.7.5 \
  && ./configure --with-luajit --with-http_realip_module \
  && make \
  && make install
@@ -43,6 +43,7 @@ RUN wget -O /tmp/openresty.tar.gz http://openresty.org/download/ngx_openresty-1.
 RUN mkdir /etc/nginx
 RUN mkdir /etc/nginx/logs
 ADD nginx.conf /etc/nginx/
+ADD model.lua /etc/nginx/
 WORKDIR /etc/nginx
 
 ENV PATH /usr/local/openresty/nginx/sbin:$PATH
