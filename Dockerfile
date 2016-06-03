@@ -43,6 +43,8 @@ RUN echo "==> Downloading OpenResty..." \
  && echo "==> Configuring OpenResty..." \
  && ./configure \
     --with-luajit \
+    --with-pcre-jit \
+    --with-ipv6 \
     --with-http_realip_module \
  && echo "==> Building OpenResty..." \
  && make \
@@ -54,12 +56,12 @@ RUN mkdir /etc/nginx/logs
 RUN touch /etc/nginx/logs/error.log
 RUN mkdir /etc/nginx/client_body_temp
 ADD nginx.conf /etc/nginx/
+
+ENV PATH=/usr/local/openresty/bin:/usr/local/openresty/nginx/sbin:$PATH
+
 WORKDIR /etc/nginx
-
-ENV PATH /usr/local/openresty/nginx/sbin:$PATH
-
 # Define default command.
-CMD ["nginx -p '' -c nginx.conf -g 'daemon off;'"]
+CMD ["nginx -p '' -c nginx.conf -g 'daemon off; error_log /dev/stderr info;'"]
 
 # Expose ports.
 EXPOSE 80
