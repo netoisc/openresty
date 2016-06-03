@@ -52,16 +52,16 @@ RUN echo "==> Downloading OpenResty..." \
  && make install
 
 RUN mkdir /etc/nginx
-RUN mkdir /etc/nginx/logs
-RUN touch /etc/nginx/logs/error.log
-RUN mkdir /etc/nginx/client_body_temp
+RUN mkdir /logs
+RUN touch /logs/error.log
+RUN mkdir /client_body_temp
 ADD nginx.conf /etc/nginx/
 
 ENV PATH=/usr/local/openresty/bin:/usr/local/openresty/nginx/sbin:$PATH
 
 WORKDIR /etc/nginx
 # Define default command.
-CMD ["nginx -p '' -c nginx.conf -g 'daemon off; error_log /dev/stderr info;'"]
+CMD ["nginx -p '' -c nginx.conf -g 'daemon off;'"]
 
 # Expose ports.
 EXPOSE 80
