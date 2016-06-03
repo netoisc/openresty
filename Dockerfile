@@ -51,6 +51,8 @@ RUN echo "==> Downloading OpenResty..." \
 
 RUN mkdir /etc/nginx
 RUN mkdir /etc/nginx/logs
+RUN touch /etc/nginx/logs/error.log
+RUN mkdir /etc/nginx/client_body_temp
 ADD nginx.conf /etc/nginx/
 WORKDIR /etc/nginx
 
