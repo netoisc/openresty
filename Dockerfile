@@ -7,7 +7,7 @@ FROM debian:jessie
 
 MAINTAINER 3Blades <contact@3blades.io>
 
-ENV OPENRESTY_VERSION 1.9.7.3
+ENV OPENRESTY_VERSION 1.9.7.5
 
 RUN apt-get update \
  && apt-get upgrade -y \
@@ -36,7 +36,7 @@ RUN apt-get install -y \
     perl
 
 RUN echo "==> Downloading OpenResty..." \
- && wget -O /tmp/openresty.tar.gz http://openresty.org/download/ngx_openresty-${OPENRESTY_VERSION}.tar.gz \
+ && wget -O /tmp/openresty.tar.gz http://openresty.org/download/openresty-${OPENRESTY_VERSION}.tar.gz \
  && cd /tmp \
  && tar xzvf openresty.tar.gz \
  && cd /tmp/openresty-$OPENRESTY_VERSION \
