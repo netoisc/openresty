@@ -3,7 +3,7 @@
 # and add 'Full Access' to Docker Cloud API. Publish internal port to 
 # external dynamic port for service discovery.
 
-FROM debian:jessie
+FROM ubuntu:16.04
 
 MAINTAINER 3Blades <contact@3blades.io>
 
