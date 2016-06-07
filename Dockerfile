@@ -55,13 +55,14 @@ RUN mkdir /etc/nginx
 RUN mkdir /logs
 RUN touch /logs/error.log
 RUN mkdir /client_body_temp
+RUN touch /etc/nginx/logs/flask-error.log
 ADD nginx.conf /etc/nginx/
 
 ENV PATH=/usr/local/openresty/bin:/usr/local/openresty/nginx/sbin:$PATH
 
 WORKDIR /etc/nginx
 # Define default command.
-CMD ["nginx -p '' -c nginx.conf -g 'daemon off;'"]
+CMD ["/usr/local/openresty/nginx/sbin/nginx -p '' -c nginx.conf -g 'daemon off;'"]
 
 # Expose ports.
 EXPOSE 80
