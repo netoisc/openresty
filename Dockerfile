@@ -52,6 +52,7 @@ RUN echo "==> Downloading OpenResty..." \
  && make install
 
 RUN mkdir /etc/nginx
+RUN mkdir /etc/nginx/logs
 RUN mkdir /logs
 RUN touch /logs/error.log
 RUN mkdir /client_body_temp
