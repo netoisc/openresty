@@ -1,12 +1,12 @@
 local function expanding_random(items, weights)
     local list = {}
-    for _, item in ipairs(items) do
-        local n = weights[item]
-        for i = 1, n do table.insert(list, item) end
+    for i, item in ipairs(items) do
+        local n = weights[i]
+        for j = 1, n do
+            table.insert(list, item)
+        end
     end
-    return function()
-        return list[math.random(1, #list)]
-    end
+    return list[math.random(1, #list)]
 end
 
 local re = ngx.location.capture(ngx.var.url_ips)
