@@ -3,11 +3,9 @@
 # and add 'Full Access' to Docker Cloud API. Publish internal port to 
 # external dynamic port for service discovery.
 
-FROM ubuntu:16.04
+FROM debian:jessie
 
 MAINTAINER 3Blades <contact@3blades.io>
-
-ENV OPENRESTY_VERSION 1.9.7.5
 
 RUN apt-get update \
  && apt-get upgrade -y \
@@ -34,6 +32,8 @@ RUN apt-get install -y \
     libssl-dev \
     make \
     perl
+
+ENV OPENRESTY_VERSION 1.9.7.3
 
 RUN echo "==> Downloading OpenResty..." \
  && wget -O /tmp/openresty.tar.gz http://openresty.org/download/openresty-${OPENRESTY_VERSION}.tar.gz \
