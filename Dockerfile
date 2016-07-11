@@ -33,7 +33,7 @@ RUN apt-get install -y \
     make \
     perl
 
-ENV OPENRESTY_VERSION 1.9.7.3
+ENV OPENRESTY_VERSION 1.9.15.1
 
 RUN echo "==> Downloading OpenResty..." \
  && wget -O /tmp/openresty.tar.gz http://openresty.org/download/openresty-${OPENRESTY_VERSION}.tar.gz \
