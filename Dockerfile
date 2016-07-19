@@ -57,6 +57,7 @@ RUN mkdir /logs
 RUN touch /logs/error.log
 RUN mkdir /client_body_temp
 RUN touch /etc/nginx/logs/flask-error.log
+RUN touch /etc/nginx/logs/flask-access.log
 ADD nginx.conf /etc/nginx/
 
 ENV PATH=/usr/local/openresty/bin:/usr/local/openresty/nginx/sbin:$PATH
