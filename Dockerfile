@@ -33,16 +33,18 @@ RUN apt-get install -y \
     make \
     perl
 
-ENV OPENRESTY_VERSION 1.9.7.3
+ENV OPENRESTY_VERSION 1.9.15.1
 
 RUN echo "==> Downloading OpenResty..." \
- && wget -O /tmp/openresty.tar.gz http://openresty.org/download/ngx_openresty-${OPENRESTY_VERSION}.tar.gz \
+ && wget -O /tmp/openresty.tar.gz http://openresty.org/download/openresty-${OPENRESTY_VERSION}.tar.gz \
  && cd /tmp \
  && tar xzvf openresty.tar.gz \
  && cd /tmp/openresty-$OPENRESTY_VERSION \
  && echo "==> Configuring OpenResty..." \
  && ./configure \
     --with-luajit \
+    --with-pcre-jit \
+    --with-ipv6 \
     --with-http_realip_module \
  && echo "==> Building OpenResty..." \
  && make \
@@ -51,13 +53,18 @@ RUN echo "==> Downloading OpenResty..." \
 
 RUN mkdir /etc/nginx
 RUN mkdir /etc/nginx/logs
+RUN mkdir /logs
+RUN touch /logs/error.log
+RUN mkdir /client_body_temp
+RUN touch /etc/nginx/logs/flask-error.log
+RUN touch /etc/nginx/logs/flask-access.log
 ADD nginx.conf /etc/nginx/
+
+ENV PATH=/usr/local/openresty/bin:/usr/local/openresty/nginx/sbin:$PATH
+
 WORKDIR /etc/nginx
-
-ENV PATH /usr/local/openresty/nginx/sbin:$PATH
-
 # Define default command.
-CMD ["nginx -p '' -c nginx.conf -g 'daemon off;'"]
+CMD ["/usr/local/openresty/nginx/sbin/nginx -p '' -c nginx.conf -g 'daemon off;'"]
 
 # Expose ports.
 EXPOSE 80
