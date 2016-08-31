@@ -17,5 +17,5 @@ script:
   #push image
   - docker push 3blades/openresty:build-$TRAVIS_BUILD_NUMBER
 notifications:
-  slack: 3blades:0lcWo2AurVy41XkVdyFVejCG
+  slack: 3blades:2UxzPYWeoYbj80mCt5MdYeez
     
