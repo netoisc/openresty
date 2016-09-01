@@ -63,7 +63,7 @@ ENV PATH=/usr/local/openresty/bin:/usr/local/openresty/nginx/sbin:$PATH
 
 WORKDIR /etc/nginx
 # Define default command.
-CMD ["/usr/local/openresty/nginx/sbin/nginx -p '' -c nginx.conf -g 'daemon off;'"]
+CMD ["nginx -p '' -c nginx.conf -g 'daemon off;'"]
 
 # Expose ports.
 EXPOSE 80

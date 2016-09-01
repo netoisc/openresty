@@ -12,7 +12,7 @@ if not ok then
 end
 
 local data, err = red:get("server_details_" .. ngx.var.serverId)
-if not data then
+if not data or data == ngx.null then
     ngx.log(ngx.ERR, "failed to fetch details: ", err)
     if ngx.var.serverType == 'model' then
         local resp_text = cjson.encode({
