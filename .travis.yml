@@ -2,9 +2,6 @@
 branches:  
   only:
     - master
-    - dev
-    - staging
-    - production
 services:  
 #Enable docker service inside travis
   - docker
