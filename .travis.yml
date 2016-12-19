@@ -21,6 +21,7 @@ script:
   #push both images
   - docker push $DOCKER_IMAGE_NAME:build-$TRAVIS_BUILD_NUMBER
   - docker push $DOCKER_IMAGE_NAME:latest
+  
 notifications:
   slack: 3blades:2UxzPYWeoYbj80mCt5MdYeez
 env:
