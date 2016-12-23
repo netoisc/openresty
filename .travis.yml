@@ -1,8 +1,0 @@
-# whitelist
-branches:  
-  only:
-    - master
-before_install:  
-  - export PATH=$PATH:$HOME/.local/bin # put aws in the path
-notifications:
-  slack: 3blades:2UxzPYWeoYbj80mCt5MdYeez
