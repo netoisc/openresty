@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/3Blades/openresty.svg?token=y3jvxynhJQZHELnDYJdy&branch=master)](https://travis-ci.com/3Blades/openresty)
+[![Build Status](https://travis-ci.org/3Blades/openresty.svg?branch=master)](https://travis-ci.org/3Blades/openresty)
 [![Docker Hub](https://img.shields.io/badge/docker-ready-blue.svg)](https://registry.hub.docker.com/u/3blades/openresty)
 
 # 3Blades Reverse Proxy
